@@ -1,6 +1,6 @@
-__author__ = 'adriana'
 '''
-createMAFFeatures.py takes in an alignment file in MAF format and creates a feature file in which
+createMAFFeatures.py takes in an alignment file in MAF format and extracts just the sequence information
+creates a feature file in which
 each line corresponds to a nucleotide in the human genome, and contains columns explaining whether
 the other species have the same nucleotide at that position or not.
 ----The stuff below is not accurate----
@@ -139,4 +139,5 @@ def main():
     o.close()
 main()
 
+panTro4	gorGor3	ponAbe2	nomLeu3	rheMac3	macFas5	papHam1	chlSab1	calJac3	saiBol1	otoGar3	tupChi1	speTri2	jacJac1	micOch1	criGri1	mesAur1	mm10	rn5	hetGla2	cavPor3	chiLan1	octDeg1	oryCun2	ochPri3	susScr3	vicPac2	camFer1	turTru2	orcOrc1	panHod1	bosTau7	oviAri3	capHir1	equCab2	cerSim1	felCat5	canFam3	musFur1	ailMel1	odoRosDiv1	lepWed1	pteAle1	pteVam1	myoDav1	myoLuc2	eptFus1	eriEur2	sorAra2	conCri1	loxAfr3	eleEdw1	triMan1	chrAsi1	echTel2	oryAfe1	dasNov3	monDom5	sarHar1	macEug2	ornAna1	falChe1	falPer1	ficAlb2	zonAlb1	geoFor1	taeGut2	pseHum1	melUnd1	amaVit1	araMac1	colLiv1	anaPla1	galGal4	melGal1	allMis1	cheMyd1	chrPic1	pelSin1	apaSpi1	anoCar2	xenTro7	latCha1	tetNig2	fr3	takFla1	oreNil2	neoBri1	hapBur1	mayZeb1	punNye1	oryLat2	xipMac1	gasAcu1	gadMor1	danRer7	astMex1	lepOcu1	petMar2
 
