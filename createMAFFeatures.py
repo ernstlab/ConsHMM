@@ -32,7 +32,7 @@ from Bio.Seq import Seq
 
 def main():
     if len(sys.argv) < 6:
-        print "Usage: python createMAFFeatures.py <alignment file> <alignment source> <output file> <chromosome> <reference species> <start position (optional)"
+        print "Usage: python createMAFFeatures.py <alignment file> <species names file> <output file> <chromosome> <reference species> <start position (optional)"
         exit(1)
     mafFile = sys.argv[1]
     source = sys.argv[2]
