@@ -4,26 +4,25 @@ from collections import defaultdict
 from Bio.Seq import Seq
 
 def main():
-    if len(sys.argv) < 6:
+    if len(sys.argv) < 7:
         print("Usage: python createMAFFeatures.py <alignment file> <species names file> <output file> <chromosome> <reference species> <reference species chromosome length file>")
         exit(1)
     mafFile = sys.argv[1]
-    speciesFile = sys.argv[2]
+    speciesFile = open(sys.argv[2], 'r')
     featFile = sys.argv[3]
     chr = sys.argv[4]
-    refSpecies = sys.argv[5] + chr
+    refSpecies = sys.argv[5] + "." + chr
     chromLengths = sys.argv[6]
 
     f = gzip.open(mafFile, 'rb')
-    species = open(speciesFile, 'r')
     o = gzip.open(featFile, 'w')
     chromSizes = open(chromLengths, 'r')
 
     species = []
-    for line in species:
+    for line in speciesFile:
         species.append(line.strip())
     species = sorted(species)
-
+    
     chrLength = {}
     for line in chromSizes:
         splitLine = line.strip().split()
@@ -59,7 +58,7 @@ def main():
             type = splitSeq[0]
             if type == 's':
                 curSpecies = splitSeq[1]
-
+                
                 if curSpecies == refSpecies: # store info for human
                     trueLenHuman = int(splitSeq[3])
                     if splitSeq[4] == '-': # reverse complement
