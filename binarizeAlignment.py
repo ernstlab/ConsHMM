@@ -35,7 +35,7 @@ def main():
     oDir = formatDir(sys.argv[2])
     chr = sys.argv[3]
     linesPerChunk = int(sys.argv[4])
-    chromLengths = sys.argv[5]
+    chromSizes = open(sys.argv[5], 'r')
 
     chrLength = {}
     for line in chromSizes:
@@ -53,6 +53,7 @@ def main():
 
     print "Creating output file . . . ",
     ofile = gzip.open(oDir + chr + "_" + str(curChunk) + "_features_binary.txt.gz", 'w')
+    ofile.write("cell" + str(curChunk) + "\t" + chr + "\n")
     print "Done."
 
     lastPos = -1
@@ -66,6 +67,7 @@ def main():
                     ofile.close()
                     curChunk += 1
                     ofile = gzip.open(oDir + chr + "_" + str(curChunk) + "_features_binary.txt.gz", 'w')
+                    ofile.write("cell" + str(curChunk) + "\t" + chr + "\n")
 
                 ofile.write(str(i) + "\t")
                 extraFeatures = [0, 2] * numFeats
@@ -76,6 +78,7 @@ def main():
             ofile.close()
             curChunk += 1
             ofile = gzip.open(oDir + chr + "_" + str(curChunk) + "_features_binary.txt.gz", 'w')
+            ofile.write("cell" + str(curChunk) + "\t" + chr + "\n")
 
         ofile.write(str(pos) + "\t")
         for k in range(len(features)):
@@ -89,6 +92,7 @@ def main():
                 ofile.close()
                 curChunk += 1
                 ofile = gzip.open(oDir + chr + "_" + str(curChunk) + "_features_binary.txt.gz", 'w')
+                ofile.write("cell" + str(curChunk) + "\t" + chr + "\n")
 
             ofile.write(str(i) + "\t")
             extraFeatures = [0, 2] * numFeats
