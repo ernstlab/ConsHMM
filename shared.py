@@ -1,3 +1,4 @@
+from __future__ import print_function
 from bisect import bisect_left
 from sklearn import metrics
 import numpy as np
@@ -9,27 +10,27 @@ def removeNaN(a):
 
 def createDir(directory):
     if not os.path.exists(directory):
-        print "Creating ", directory, " . . . ",
+        print("Creating ", directory, " . . . ",)
         os.makedirs(directory)
-        print "Done."
+        print("Done.")
 
 def formatDir(directory):
     if not os.path.isdir(directory):
-        print directory, " not found!"
+        print(directory, " not found!")
         exit(1)
     if directory[-1] != '/':
         return directory + '/'
     return directory
 
 def plotROC(ax, trueY, scores, pos_label, type):
-    print "Plotting ROC curve for ", type, " . . . ",
+    print("Plotting ROC curve for ", type, " . . . ",)
     fpr, tpr, thresholds = metrics.roc_curve(trueY, scores, pos_label=pos_label)
     roc_auc = metrics.auc(fpr, tpr)
 
     #fpr = fpr[fpr <= 0.15]
     #thresholds = thresholds[:50]
     ax.plot(fpr, tpr, label=type + ' (area = ' + str(round(roc_auc, 2)) + ')')
-    print "Done."
+    print("Done.")
 
 def getExons(chr, exonDir):
     exons = []

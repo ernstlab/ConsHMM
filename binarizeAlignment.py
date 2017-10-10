@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import sys
 import gzip
@@ -30,7 +31,7 @@ def createFeatures(splitLine, posReference):
 
 def main():
     if len(sys.argv) < 7:
-        print "Usage: binarizeAlignment.py <MAF sequence file> <output directory> <chromosome> <lines per chunk> <chromosome lengths file> <reference species>"
+        print("Usage: binarizeAlignment.py <MAF sequence file> <output directory> <chromosome> <lines per chunk> <chromosome lengths file> <reference species>")
         exit(1)
 
     alignmentFile = gzip.open(sys.argv[1], 'r')
@@ -63,11 +64,11 @@ def main():
     startTime = time.time()
     curChunk = 0
 
-    print "Creating output file . . . ",
+    print("Creating output file . . . ",)
     ofile = gzip.open(oDir + chr + "_" + str(curChunk) + "_features_binary.txt.gz", 'w')
     ofile.write("cell" + str(curChunk) + "\t" + chr + "\n")
     ofile.write(newHeader + "\n")
-    print "Done."
+    print("Done.")
 
     lastPos = -1
     for line in alignmentFile:
@@ -115,6 +116,6 @@ def main():
     ofile.close()
 
     endTime = time.time()
-    print "Done.  Time: ", endTime - startTime, " seconds."
+    print("Done.  Time: ", endTime - startTime, " seconds.")
 
 main()

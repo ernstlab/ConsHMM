@@ -1,10 +1,11 @@
+from __future__ import print_function
 import glob
 import sys
 from shared import *
 
 def main():
     if len(sys.argv) < 5:
-        print "Usage: python mergeSegmentation.py <bed folder> <output file> <segment size> <num states>"
+        print("Usage: python mergeSegmentation.py <bed folder> <output file> <segment size> <num states>")
         exit(1)
 
     bedFolder = formatDir(sys.argv[1])
@@ -23,7 +24,7 @@ def main():
     lastLine = ""
     for idx in range(0, maxIdx + 1):
         file = bedFolder + "cell" + str(idx) + "_" + numStates + "_segments.bed"
-        print "Joining file ", file
+        print("Joining file ", file)
 
         bedFile = open(file, 'r')
         firstLine = True
