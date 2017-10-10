@@ -84,16 +84,17 @@ def main():
             if seqHuman[i] != '-':
                 numBases += 1
                 if not (pos in covered):
-                    o.write(str(pos) + "," + seqHuman[i])
+                    o.write(str(pos))
                     for sp in species:
-                        if (sp not in alignedToHuman) or (alignedToHuman[sp][i] == '-'):
+                        if (sp == sys.argv[5]):
+                            o.write("," + seqHuman[i])
+                        elif (sp not in alignedToHuman) or (alignedToHuman[sp][i] == '-'):
                             o.write(",X")
                         else:
                             o.write("," + str(alignedToHuman[sp][i]))
                     o.write("\n")
                     covered[pos] = 1
                 pos += 1
-
         scoreLine = f.readline()
     o.close()
 main()
