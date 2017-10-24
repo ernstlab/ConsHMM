@@ -1,12 +1,8 @@
 from __future__ import print_function
-import os
 import sys
 import gzip
 import time
-import random
 import numpy as np
-from sklearn import linear_model, datasets, metrics
-from collections import defaultdict
 from shared import *
 
 def createFeatures(splitLine, posReference):
