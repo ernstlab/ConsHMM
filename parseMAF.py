@@ -1,6 +1,6 @@
 import gzip
 import sys
-from __future__ import print_function
+from collections import defaultdict
 from Bio.Seq import Seq
 
 def main():

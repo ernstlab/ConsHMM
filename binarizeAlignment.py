@@ -1,8 +1,11 @@
-from __future__ import print_function
+import os
 import sys
 import gzip
 import time
+import random
 import numpy as np
+from sklearn import linear_model, datasets, metrics
+from collections import defaultdict
 from shared import *
 
 def createFeatures(splitLine, posReference):
@@ -26,8 +29,8 @@ def createFeatures(splitLine, posReference):
     return int(splitLine[0]), features
 
 def main():
-    if len(sys.argv) < 7:
-        print("Usage: binarizeAlignment.py <MAF sequence file> <output directory> <chromosome> <lines per chunk> <chromosome lengths file> <reference species>")
+    if len(sys.argv) < 8:
+        print "Usage: binarizeAlignment.py <MAF sequence file> <output directory> <chromosome> <lines per chunk> <chromosome lengths file> <reference species> <file list>"
         exit(1)
 
     alignmentFile = gzip.open(sys.argv[1], 'r')
@@ -36,6 +39,7 @@ def main():
     linesPerChunk = int(sys.argv[4])
     chromSizes = open(sys.argv[5], 'r')
     refSpecies = sys.argv[6]
+    outputFileList = open(sys.argv[6], 'w')
 
     chrLength = {}
     for line in chromSizes:
@@ -60,11 +64,12 @@ def main():
     startTime = time.time()
     curChunk = 0
 
-    print("Creating output file . . . ",)
+    print "Creating output file . . . ",
     ofile = gzip.open(oDir + chr + "_" + str(curChunk) + "_features_binary.txt.gz", 'w')
+    outputFileList.write(chr + "_" + str(curChunk) + "_features_binary.txt.gz\n")
     ofile.write("cell" + str(curChunk) + "\t" + chr + "\n")
     ofile.write(newHeader + "\n")
-    print("Done.")
+    print "Done."
 
     lastPos = -1
     for line in alignmentFile:
@@ -88,6 +93,7 @@ def main():
             ofile.close()
             curChunk += 1
             ofile = gzip.open(oDir + chr + "_" + str(curChunk) + "_features_binary.txt.gz", 'w')
+            outputFileList.write(chr + "_" + str(curChunk) + "_features_binary.txt.gz\n")
             ofile.write("cell" + str(curChunk) + "\t" + chr + "\n")
             ofile.write(newHeader + "\n")
 
@@ -109,9 +115,10 @@ def main():
             ofile.write("\t".join([str(k) for k in extraFeatures]))
             ofile.write("\n")
 
+    outputFileList.close()
     ofile.close()
 
     endTime = time.time()
-    print("Done.  Time: ", endTime - startTime, " seconds.")
+    print "Done.  Time: ", endTime - startTime, " seconds."
 
 main()

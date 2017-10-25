@@ -23,14 +23,20 @@ def main():
     print("Splitting up MAF file per chromosome . . .")
     curBlock = []
     curChr = ""
+    skippedChromosomes = set()
     for line in mafFile:
         if line[0] == "#": # comment lines will get discarded
             continue
 
         if line == "\n":
-            for curLine in curBlock:
-                outputFiles[curChr].write(curLine)
-            outputFiles[curChr].write("\n")
+            if curChr not in outputFiles:
+                skippedChromosomes.add(curChr)
+            else:
+                for curLine in curBlock:
+                    outputFiles[curChr].write(curLine)
+                outputFiles[curChr].write("\n")
+            curBlock = []
+            curChr = ""
         else:
             if line[0] == "s":
                 splitLine = line.strip().split()
@@ -44,6 +50,10 @@ def main():
     for oFile in outputFiles:
         oFile.close()
     print("Done.")
+
+    print("Other chromosomes found in MAF file: ")
+    for chr in skippedChromosomes:
+        print(chr, end = "")
 
 main()
 
