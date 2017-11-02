@@ -35,14 +35,15 @@ def main():
         o.write("," + sp)
     o.write("\n")
 
-    f.readline() # read header line
-    scoreLine = f.readline()
-    while scoreLine[0] == '#':
-        scoreLine = f.readline()
+    scoreLine = f.readline() # read first line
 
     numBases = 0
     covered = {} # dictionary of bases covered to account for blocks convering duplicate pieces
     while scoreLine != "":
+        if (scoreLine[0] == "#"): #skip comment lines
+            scoreLine = f.readline()
+            continue
+
         sequenceLine = f.readline()
         startHuman = -1
         seqHuman = ""
