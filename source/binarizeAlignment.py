@@ -39,7 +39,7 @@ def main():
     linesPerChunk = int(sys.argv[4])
     chromSizes = open(sys.argv[5], 'r')
     refSpecies = sys.argv[6]
-    outputFileList = open(sys.argv[6], 'w')
+    outputFileList = open(sys.argv[7], 'w')
 
     chrLength = {}
     for line in chromSizes:
