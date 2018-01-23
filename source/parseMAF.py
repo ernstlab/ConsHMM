@@ -1,21 +1,34 @@
 import gzip
 import sys
+import argparse
 from collections import defaultdict
 from Bio.Seq import Seq
+from shared import *
 
-def main():
-    if len(sys.argv) < 7:
-        print("Usage: python createMAFFeatures.py <alignment file> <species names file> <output file> <chromosome> <reference species> <reference species chromosome length file>")
-        exit(1)
-    mafFile = sys.argv[1]
-    speciesFile = open(sys.argv[2], 'r')
-    featFile = sys.argv[3]
-    chr = sys.argv[4]
-    refSpecies = sys.argv[5] + "." + chr
-    chromLengths = sys.argv[6]
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="""parse MAF.py takes in a MAF file that contains a multiple sequence alignment for one of the chromosomes
+    of the reference species in the alignment, and outputs a file containing just the sequence information. The output file will have as many rows as the
+    number of bases in the input chromosome, and N + 1 columns, where N is the number of species in the multiple sequence alignment. The first column contains the
+    coordinate of a base in the reference species. The following columns contain the nucleotide at that position in the alignment for each species including the
+    reference. Indels and 'N' nucleotides are both encoded with 'X'.""", allow_abbrev=False)
+    parser.add_argument('-m', '--MAFFile', required = True, dest='mafFile', help='.maf file containing a multi-sequence alignment.')
+    parser.add_argument('-s', '--speciesFile', required=True, dest='speciesFile', help='File containing a list of the names of all the species in the alignment.')
+    parser.add_argument('-o', '--outputFile', required=True, dest='outputFile', help='Output file to write the sequence information to.')
+    parser.add_argument('-c', '--chromosome', required=True, dest='chr', help='Chromosome contained in the MAF file. Specify as chr*')
+    parser.add_argument('-r', '--refSpecies', required=True, dest='refSpecies', help='Genome assembly name of the reference species in the alignment.')
+    parser.add_argument('-cl', '--chromLengths', required=True, dest='chromLengths', help='File containing the chrosomome lengths for the reference species in the alignment.')
 
-    f = gzip.open(mafFile, 'rb')
-    o = gzip.open(featFile, 'w')
+    args = parser.parse_args()
+
+    mafFile = args.mafFile
+    speciesFile = open(args.speciesFile, 'r')
+    featFile = args.outputFile
+    chr = args.chr
+    refSpecies = args.refSpecies + "." + chr
+    chromLengths = args.chromLengths
+
+    f = gzip.open(mafFile, 'rt')
+    o = gzip.open(featFile, 'wt')
     chromSizes = open(chromLengths, 'r')
 
     species = []
@@ -27,6 +40,10 @@ def main():
     for line in chromSizes:
         splitLine = line.strip().split()
         chrLength[splitLine[0]] = int(splitLine[1])
+
+    if chr not in chrLength:
+        printDictKeys(chrLength)
+        exit(1)
 
     idx = 0
     # write header to output file
@@ -97,6 +114,5 @@ def main():
                 pos += 1
         scoreLine = f.readline()
     o.close()
-main()
 
 

@@ -1,6 +1,8 @@
 import sys
+import argparse
 
 def main():
+
     if len(sys.argv) < 3:
         print("Usage: python extractSpeciesNames.py <.nh species file> <output file>")
         exit(1)

@@ -4,9 +4,9 @@ import gzip
 import time
 import random
 import numpy as np
+import argparse
 from sklearn import linear_model, datasets, metrics
 from collections import defaultdict
-from shared import *
 
 def createFeatures(splitLine, posReference):
     features = np.empty((len(splitLine) - 2) * 2) # two features for each species

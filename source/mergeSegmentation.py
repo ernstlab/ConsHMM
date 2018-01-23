@@ -2,9 +2,12 @@ from __future__ import print_function
 import glob
 import sys
 import gzip
+import argparse
 from shared import *
 
 def main():
+    parser = argparse.ArgumentParser(description='Merge ConsHMM segmentation chunks into one segmentation.', allow_abbrev=False)
+    parser.add_argument('-b', '--b')
     if len(sys.argv) < 6:
         print("Usage: python mergeSegmentation.py <bed folder> <output file> <segment size> <num states> <suffix include>")
         exit(1)
