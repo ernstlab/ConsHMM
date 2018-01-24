@@ -37,14 +37,15 @@ def parse_maf(main_args):
         o.write("," + sp)
     o.write("\n")
 
-    f.readline()  # read header line
-    score_line = f.readline()
-    while score_line[0] == '#':
-        score_line = f.readline()
+    score_line = f.readline()  # read first line
 
     num_bases = 0
     covered = {}  # dictionary of bases covered to account for blocks convering duplicate pieces
     while score_line != "":
+        if score_line[0] == "#":  # skip comment lines
+            score_line = f.readline()
+            continue
+
         sequence_line = f.readline()
         start_human = -1
         seq_human = ""
@@ -52,6 +53,7 @@ def parse_maf(main_args):
 
         last_alignment = []
         reverse_complement = False
+
         # parse an alignment block
         len_human_dash = -1
         while sequence_line != "\n":
