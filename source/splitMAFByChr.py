@@ -1,63 +1,69 @@
-from __future__ import print_function
-from shared import *
-import sys
+from .shared import *
 import gzip
+import argparse
 
-def main():
-    if len(sys.argv) != 5:
-        print("Usage: python splitMAFByChr.py <MAF file> <output directory> <reference species> <chromosome list>")
-        exit(1)
-    mafFile = gzip.open(sys.argv[1], 'r')
-    oDir = formatDir(sys.argv[2])
-    refSpecies = sys.argv[3]
-    chromosomeList = open(sys.argv[4], 'r')
+
+def split_maf_by_chr(main_args):
+    maf_file = gzip.open(main_args.maf_file, 'rt')
+    output_directory = format_dir(main_args.output_directory)
+    reference_species = main_args.reference_species
+    chromosome_list_file = open(main_args.chromosome_list_file_name, 'r')
 
     print("Creating output files (one for each chromosome) . . .",)
-    outputFiles = {}
-    for line in chromosomeList:
-        curChr = line.strip()
-        oFile = gzip.open(oDir + curChr + ".maf.gz", "w")
-        outputFiles[curChr] = oFile
+    output_files = {}
+    for line in chromosome_list_file:
+        cur_chr = line.strip()
+        output_file = gzip.open(output_directory + cur_chr + ".maf.gz", "wt")
+        output_files[cur_chr] = output_file
     print("Done.")
 
     print("Splitting up MAF file per chromosome . . .")
-    curBlock = []
-    curChr = ""
-    skippedChromosomes = set()
-    for line in mafFile:
-        if line[0] == "#": # comment lines will get discarded
+    cur_block = []
+    cur_chr = ""
+    skipped_chromosomes = set()
+    for line in maf_file:
+        if line[0] == "#":  # comment lines will get discarded
             continue
 
         if line == "\n":
-            if curChr not in outputFiles:
-                skippedChromosomes.add(curChr)
+            if cur_chr not in output_files:
+                skipped_chromosomes.add(cur_chr)
             else:
-                for curLine in curBlock:
-                    outputFiles[curChr].write(curLine)
-                outputFiles[curChr].write("\n")
-            curBlock = []
-            curChr = ""
+                for curLine in cur_block:
+                    output_files[cur_chr].write(curLine)
+                output_files[cur_chr].write("\n")
+            cur_block = []
+            cur_chr = ""
         else:
             if line[0] == "s":
-                splitLine = line.strip().split()
-                curSpecies = splitLine[1].split(".")[0]
-                if (curSpecies == refSpecies):
-                    curChr = splitLine[1].split(".")[1]
-            curBlock.append(line)
+                split_line = line.strip().split()
+                cur_species = split_line[1].split(".")[0]
+                if cur_species == reference_species:
+                    cur_chr = split_line[1].split(".")[1]
+            cur_block.append(line)
     print("Done.")
 
     print("Closing files . . .")
-    for oFile in outputFiles:
-        oFile.close()
+    for output_file in output_files:
+        output_file.close()
     print("Done.")
 
     print("Other chromosomes found in MAF file: ")
-    for chr in skippedChromosomes:
-        print(chr, end = "")
+    for chromosome in skipped_chromosomes:
+        print(chromosome, end="")
+        
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="""splitMafByChr.py splits multiple sequence alignmenst that are
+        provided in one single MAF files into multiple MAF files -- one for each chromosome in the reference genome.""")
 
-main()
+    parser.add_argument('-m', '--MAFFile', required=True, dest='maf_file',
+                        help='.maf file containing a multi-sequence alignment.')
+    parser.add_argument('-o', '--outputDirectory', required=True, dest='output_directory',
+                        help='Output directory in which to put the binarized segments.')
+    parser.add_argument('-r', '--refSpecies', required=True, dest='reference_species',
+                        help='Genome assembly name of the reference species in the alignment.')
+    parser.add_argument('-cl', '--chromList', required=True, dest='chromosome_list_file_name',
+                        help='File containing a list of all the chromosomes in the reference species genome for which '
+                             'you want to generate a separate MAF file.')
 
-
-
-
-
+    args = parser.parse_args()

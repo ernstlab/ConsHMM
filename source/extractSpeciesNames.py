@@ -1,26 +1,33 @@
-import sys
 import argparse
 
-def main():
 
-    if len(sys.argv) < 3:
-        print("Usage: python extractSpeciesNames.py <.nh species file> <output file>")
-        exit(1)
+def extract_species_names(main_args):
+    nh_file = open(main_args.nh_file, 'r')
+    output_file = open(main_args.output_file, 'w')
+    for line in nh_file:
+        parsed_line = line.replace("(", "")
+        parsed_line = parsed_line.replace(")", "")
+        parsed_line = parsed_line.replace('\n', "")
+        parsed_line = parsed_line.split(",")
 
-    speciesFile = open(sys.argv[1], 'r')
-    oFile = open(sys.argv[2], 'w')
-    for line in speciesFile:
-        parsedLine = line.replace("(", "")
-        parsedLine = parsedLine.replace(")", "")
-        parsedLine = parsedLine.replace('\n', "")
-        parsedLine = parsedLine.split(",")
-
-        for i in parsedLine:
+        for i in parsed_line:
             parsed_element = i.split(":")
             for j in parsed_element:
                 if (len(j) > 0) and (not j[0].isdigit()):
-                    oFile.write(j.rstrip().lstrip() + "\n")
-        
-    oFile.close()
+                    output_file.write(j.rstrip().lstrip() + "\n")
 
-main()
+    output_file.close()
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="""extractSpeciesNames.py attempts to extract the species names from a
+        .nh file describing a phylogenetic tree. Output should output should be checked manually, as .nh files are
+        not well standardized""")
+
+    parser.add_argument('-n', '--nhFile', required=True, dest='nh_file',
+                        help='.nh file describing a phylogenetic tree.')
+    parser.add_argument('-o', '--outputFile', required=True, dest='output_file',
+                        help='Output file to write the list of species to.')
+
+    args = parser.parse_args()
+
+    extract_species_names(args)
