@@ -1,4 +1,4 @@
-from .shared import *
+from shared import *
 import gzip
 import argparse
 

@@ -1,7 +1,7 @@
 import gzip
 import time
 import argparse
-from .shared import *
+from shared import *
 import numpy as np
 
 
@@ -33,7 +33,7 @@ def binarize_alignment(main_args):
     num_bases = main_args.num_bases
     chromosome_sizes_file = open(main_args.chromosome_sizes_file_name, 'r')
     reference_species = main_args.reference_species
-    output_file_list = open(main_args.file_list, 'w')
+    output_file_list = open(main_args.file_list, 'w') #TODO: have a default name for this instead of parameter
 
     chromosome_sizes_dict = {}
     for line in chromosome_sizes_file:
@@ -56,8 +56,10 @@ def binarize_alignment(main_args):
     start_time = time.time()
     cur_chunk = 0
 
+    #TODO: Improve these print statements
     print("Creating output file . . . ",)
-    output_file = gzip.open(output_directory + chromosome + "_" + str(cur_chunk) + "_features_binary.txt.gz", 'wt')
+    output_file = gzip.open(output_directory + chromosome + "_" + str(cur_chunk) + "_features_binary.txt.gz",
+                            'wt') #TODO: maybe name this something differently?
     output_file_list.write(chromosome + "_" + str(cur_chunk) + "_features_binary.txt.gz\n")
     output_file.write("cell" + str(cur_chunk) + "\t" + chromosome + "\n")
     output_file.write(new_header + "\n")
@@ -68,6 +70,7 @@ def binarize_alignment(main_args):
         split_line = line.strip().split(",")
         pos, features = create_features(split_line, pos_reference)
 
+        #TODO: Improve print statements when creating files
         if pos != (last_pos + 1):
             for i in range(last_pos + 1, pos):
                 if (i != 0) and (i % num_bases == 0):  # check to see if we should start a new chunk

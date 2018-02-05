@@ -1,0 +1,401 @@
+hg19: 
+ commonName: human
+ group: Primate
+ distanceToHuman: 0
+panTro4: 
+ commonName: Chimp
+ group: Primate
+ distanceToHuman: 1
+gorGor3:
+ commonName: Gorilla
+ group: Primate
+ distanceToHuman: 2
+ponAbe2:
+ commonName: Orangutan
+ group: Primate
+ distanceToHuman: 3
+nomLeu3:
+ commonName: Gibbon
+ group: Primate
+ distanceToHuman: 4
+rheMac3:
+ commonName: Rhesus
+ group: Primate
+ distanceToHuman: 5
+macFas5:
+ commonName: Crab-eating macaque
+ group: Primate
+ distanceToHuman: 6
+papHam1:
+ commonName: Baboon
+ group: Primate
+ distanceToHuman: 7
+chlSab1:
+ commonName: Green monkey
+ group: Primate
+ distanceToHuman: 8
+calJac3:
+ commonName: Marmoset
+ group: Primate
+ distanceToHuman: 9
+saiBol1:
+ commonName: Squirrel monkey
+ group: Primate
+ distanceToHuman: 10
+otoGar3:
+ commonName: Bushbaby
+ group: Primate
+ distanceToHuman: 11
+tupChi1:
+ commonName: Chinese tree shrew
+ group: Euarchontoglires
+ distanceToHuman: 12
+speTri2:
+ commonName: Squirrel
+ group: Euarchontoglires
+ distanceToHuman: 13
+jacJac1:
+ commonName: Lesser Egyptian jerboa
+ group: Euarchontoglires
+ distanceToHuman: 14
+micOch1:
+ commonName: Prairie vole
+ group: Euarchontoglires
+ distanceToHuman: 15
+criGri1:
+ commonName: Chinese hamster
+ group: Euarchontoglires
+ distanceToHuman: 16
+mesAur1:
+ commonName: Golden hamster
+ group: Euarchontoglires
+ distanceToHuman: 17
+mm10:
+ commonName: Mouse
+ group: Euarchontoglires
+ distanceToHuman: 18
+rn5:
+ commonName: Rat
+ group: Euarchontoglires
+ distanceToHuman: 19
+hetGla2:
+ commonName: Naked mole-rat
+ group: Euarchontoglires
+ distanceToHuman: 20
+cavPor3:
+ commonName: Guinea pig
+ group: Euarchontoglires
+ distanceToHuman: 21
+chiLan1:
+ commonName: Chinchilla
+ group: Euarchontoglires
+ distanceToHuman: 22
+octDeg1:
+ commonName: Brush-tailed rat
+ group: Euarchontoglires
+ distanceToHuman: 23
+oryCun2:
+ commonName: Rabbit
+ group: Euarchontoglires
+ distanceToHuman: 24
+ochPri3:
+ commonName: Pika
+ group: Euarchontoglires
+ distanceToHuman: 25
+susScr3:
+ commonName: Pig
+ group: Laurasiatheria
+ distanceToHuman: 26
+vicPac2:
+ commonName: Alpaca
+ group: Laurasiatheria
+ distanceToHuman: 27
+camFer1:
+ commonName: Bactrian camel
+ group: Laurasiatheria
+ distanceToHuman: 28
+turTru2:
+ commonName: Dolphin
+ group: Laurasiatheria
+ distanceToHuman: 29
+orcOrc1:
+ commonName: Killer whale
+ group: Laurasiatheria
+ distanceToHuman: 30
+panHod1:
+ commonName: Tibetan antelope
+ group: Laurasiatheria
+ distanceToHuman: 31
+bosTau7:
+ commonName: Cow
+ group: Laurasiatheria
+ distanceToHuman: 32
+oviAri3:
+ commonName: Sheep
+ group: Laurasiatheria
+ distanceToHuman: 33
+capHir1:
+ commonName: Domestic goat
+ group: Laurasiatheria
+ distanceToHuman: 34
+equCab2:
+ commonName: Horse
+ group: Laurasiatheria
+ distanceToHuman: 35
+cerSim1:
+ commonName: White rhinoceros
+ group: Laurasiatheria
+ distanceToHuman: 36
+felCat5:
+ commonName: Cat
+ group: Laurasiatheria
+ distanceToHuman: 37
+canFam3:
+ commonName: Dog
+ group: Laurasiatheria
+ distanceToHuman: 38
+musFur1:
+ commonName: Ferret
+ group: Laurasiatheria
+ distanceToHuman: 39
+ailMel1:
+ commonName: Panda
+ group: Laurasiatheria
+ distanceToHuman: 40
+odoRosDiv1:
+ commonName: Pacific walrus
+ group: Laurasiatheria
+ distanceToHuman: 41
+lepWed1:
+ commonName: Weddell seal
+ group: Laurasiatheria
+ distanceToHuman: 42
+pteAle1:
+ commonName: Black flying-fox
+ group: Laurasiatheria
+ distanceToHuman: 43
+pteVam1:
+ commonName: Megabat
+ group: Laurasiatheria
+ distanceToHuman: 44
+myoDav1:
+ commonName: David's myotis bat
+ group: Laurasiatheria
+ distanceToHuman: 45
+myoLuc2:
+ commonName: Microbat
+ group: Laurasiatheria
+ distanceToHuman: 46
+eptFus1:
+ commonName: Big brown bat
+ group: Laurasiatheria
+ distanceToHuman: 47
+eriEur2:
+ commonName: Hedgehog
+ group: Laurasiatheria
+ distanceToHuman: 48
+sorAra2:
+ commonName: Shrew
+ group: Laurasiatheria
+ distanceToHuman: 49
+conCri1:
+ commonName: Star-nosed mole
+ group: Laurasiatheria
+ distanceToHuman: 50
+loxAfr3:
+ commonName: Elephant
+ group: Afrotheria
+ distanceToHuman: 51
+eleEdw1:
+ commonName: Cape elephant shrew
+ group: Afrotheria
+ distanceToHuman: 52
+triMan1:
+ commonName: Manatee
+ group: Afrotheria
+ distanceToHuman: 53
+chrAsi1:
+ commonName: Cape golden mole
+ group: Afrotheria
+ distanceToHuman: 54
+echTel2:
+ commonName: Tenrec
+ group: Afrotheria
+ distanceToHuman: 55
+oryAfe1:
+ commonName: Aardvark
+ group: Afrotheria
+ distanceToHuman: 56
+dasNov3:
+ commonName: Armadillo
+ group: Mammal
+ distanceToHuman: 57
+monDom5:
+ commonName: Opossum
+ group: Mammal
+ distanceToHuman: 58
+sarHar1:
+ commonName: Tasmanian devil
+ group: Mammal
+ distanceToHuman: 59
+macEug2:
+ commonName: Wallaby
+ group: Mammal
+ distanceToHuman: 60
+ornAna1:
+ commonName: Platypus
+ group: Mammal
+ distanceToHuman: 61
+falChe1: 
+  commonName: Saker falcon
+  group: Aves
+  distanceToHuman: 62
+falPer1:
+ commonName: Peregrine falcon
+ group: Aves
+ distanceToHuman: 63
+ficAlb2:
+ commonName: Collared flycatcher
+ group: Aves
+ distanceToHuman: 64
+zonAlb1:
+ commonName: White-throated sparrow
+ group: Aves
+ distanceToHuman: 65
+geoFor1:
+ commonName: Medium ground finch
+ group: Aves
+ distanceToHuman: 66
+taeGut2:
+ commonName: Zebra finch
+ group: Aves
+ distanceToHuman: 67
+pseHum1:
+ commonName: Tibetan ground jay
+ group: Aves
+ distanceToHuman: 68
+melUnd1:
+ commonName: Budgerigar
+ group: Aves
+ distanceToHuman: 69
+amaVit1:
+ commonName: Parrot
+ group: Aves
+ distanceToHuman: 70
+araMac1:
+ commonName: Scarlet macaw
+ group: Aves
+ distanceToHuman: 71
+colLiv1:
+ commonName: Rock pigeon
+ group: Aves
+ distanceToHuman: 72
+anaPla1:
+ commonName: Mallard duck
+ group: Aves
+ distanceToHuman: 73
+galGal4:
+ commonName: Chicken
+ group: Aves
+ distanceToHuman: 74
+melGal1:
+ commonName: Turkey
+ group: Aves
+ distanceToHuman: 75
+allMis1:
+ commonName: American alligator
+ group: Sarcopterygii
+ distanceToHuman: 76
+cheMyd1:
+ commonName: Green seaturtle
+ group: Sarcopterygii
+ distanceToHuman: 77
+chrPic1:
+ commonName: Painted turtle
+ group: Sarcopterygii
+ distanceToHuman: 78
+pelSin1:
+ commonName: Chinese softshell turtle
+ group: Sarcopterygii
+ distanceToHuman: 79
+apaSpi1:
+ commonName: Spiny softshell turtle
+ group: Sarcopterygii
+ distanceToHuman: 80
+anoCar2:
+ commonName: Lizard
+ group: Sarcopterygii
+ distanceToHuman: 81
+xenTro7:
+ commonName: X. tropicalis
+ group: Sarcopterygii
+ distanceToHuman: 82
+latCha1:
+ commonName: Coelacanth
+ group: Sarcopterygii
+ distanceToHuman: 83
+tetNig2:
+ commonName: Tetraodon
+ group: Fish
+ distanceToHuman: 84
+fr3:
+ commonName: Fugu
+ group: Fish
+ distanceToHuman: 85
+takFla1:
+ commonName: Yellowbelly pufferfish
+ group: Fish
+ distanceToHuman: 86
+oreNil2:
+ commonName: Nile tilapia
+ group: Fish
+ distanceToHuman: 87
+neoBri1:
+ commonName: Princess of Burundi
+ group: Fish
+ distanceToHuman: 88
+hapBur1:
+ commonName: Burton's mouthbreeder
+ group: Fish
+ distanceToHuman: 89
+mayZeb1:
+ commonName: Zebra mbuna
+ group: Fish
+ distanceToHuman: 90
+punNye1:
+ commonName: Pundamilia nyererei
+ group: Fish
+ distanceToHuman: 91
+oryLat2:
+ commonName: Medaka
+ group: Fish
+ distanceToHuman: 92
+xipMac1:
+ commonName: Southern platyfish
+ group: Fish
+ distanceToHuman: 93
+gasAcu1:
+ commonName: Stickleback
+ group: Fish
+ distanceToHuman: 94
+gadMor1:
+ commonName: Atlantic cod
+ group: Fish
+ distanceToHuman: 95
+danRer7:
+ commonName: Zebrafish
+ group: Fish
+ distanceToHuman: 96
+astMex1:
+ commonName: Mexican tetra (cavefish)
+ group: Fish
+ distanceToHuman: 97
+lepOcu1:
+ commonName: Spotted gar
+ group: Fish
+ distanceToHuman: 98
+petMar2:
+ commonName: Lamprey
+ group: Fish
+ distanceToHuman: 99
+

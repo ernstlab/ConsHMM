@@ -1,7 +1,7 @@
 import glob
 import gzip
 import argparse
-from .shared import *
+from shared import *
 
 
 def merge_segmentation(main_args):

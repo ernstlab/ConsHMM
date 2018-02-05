@@ -1,7 +1,8 @@
 import gzip
 import argparse
 from Bio.Seq import Seq
-from .shared import *
+import importlib
+from shared import *
 import sys
 
 
