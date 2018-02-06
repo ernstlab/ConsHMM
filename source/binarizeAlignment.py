@@ -33,7 +33,7 @@ def binarize_alignment(main_args):
     num_bases = main_args.num_bases
     chromosome_sizes_file = open(main_args.chromosome_sizes_file_name, 'r')
     reference_species = main_args.reference_species
-    output_file_list = open(main_args.file_list, 'w') #TODO: have a default name for this instead of parameter
+    output_file_list = open(output_directory + chromosome + "_binary_list.txt", 'w')
 
     chromosome_sizes_dict = {}
     for line in chromosome_sizes_file:
@@ -56,10 +56,9 @@ def binarize_alignment(main_args):
     start_time = time.time()
     cur_chunk = 0
 
-    #TODO: Improve these print statements
-    print("Creating output file . . . ",)
+    print("Creating file", output_directory + chromosome + "_" + str(cur_chunk) + "_features_binary.txt.gz", ". . . ",)
     output_file = gzip.open(output_directory + chromosome + "_" + str(cur_chunk) + "_features_binary.txt.gz",
-                            'wt') #TODO: maybe name this something differently?
+                            'wt')
     output_file_list.write(chromosome + "_" + str(cur_chunk) + "_features_binary.txt.gz\n")
     output_file.write("cell" + str(cur_chunk) + "\t" + chromosome + "\n")
     output_file.write(new_header + "\n")
@@ -70,14 +69,15 @@ def binarize_alignment(main_args):
         split_line = line.strip().split(",")
         pos, features = create_features(split_line, pos_reference)
 
-        #TODO: Improve print statements when creating files
         if pos != (last_pos + 1):
             for i in range(last_pos + 1, pos):
                 if (i != 0) and (i % num_bases == 0):  # check to see if we should start a new chunk
                     output_file.close()
                     cur_chunk += 1
+                    print("Creating file", output_directory + chromosome + "_" + str(cur_chunk) + "_features_binary.txt.gz", ". . . ",)
                     output_file = gzip.open(output_directory + chromosome + "_" + str(cur_chunk) +
                                             "_features_binary.txt.gz", 'wt')
+                    print("Done.")
                     output_file.write("cell" + str(cur_chunk) + "\t" + chromosome + "\n")
                     output_file.write(new_header + "\n")
 
@@ -88,8 +88,10 @@ def binarize_alignment(main_args):
         if (pos != 0) and (pos % num_bases == 0):
             output_file.close()
             cur_chunk += 1
+            print("Creating file", output_directory + chromosome + "_" + str(cur_chunk) + "_features_binary.txt.gz", ". . . ",)
             output_file = gzip.open(output_directory + chromosome + "_" + str(cur_chunk) +
                                     "_features_binary.txt.gz", 'wt')
+            print("Done.")
             output_file_list.write(chromosome + "_" + str(cur_chunk) + "_binary.txt.gz\n")
             output_file.write("cell" + str(cur_chunk) + "\t" + chromosome + "\n")
             output_file.write(new_header + "\n")
@@ -104,8 +106,10 @@ def binarize_alignment(main_args):
             if i % num_bases == 0:
                 output_file.close()
                 cur_chunk += 1
+                print("Creating file", output_directory + chromosome + "_" + str(cur_chunk) + "_features_binary.txt.gz", ". . . ",)
                 output_file = gzip.open(output_directory + chromosome + "_" + str(cur_chunk) +
                                         "_features_binary.txt.gz", 'wt')
+                print("Done.")
                 output_file.write("cell" + str(cur_chunk) + "\t" + chromosome + "\n")
                 output_file.write(new_header + "\n")
 
@@ -136,8 +140,6 @@ if __name__ == "__main__":
                         help='File containing the chrosomome lengths for the reference species in the alignment.')
     parser.add_argument('-r', '--refSpecies', required=True, dest='reference_species',
                         help='Genome assembly name of the reference species in the alignment.')
-    parser.add_argument('-f', '--fileList', required=True, dest='file_list',
-                        help='File in which to print a list of the name of the segment files generated.')
 
     args = parser.parse_args()
 

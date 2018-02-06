@@ -3,7 +3,7 @@ import os
 
 def format_dir(directory):
     if not os.path.isdir(directory):
-        print(directory, " directory not found. Attempting to create . . .")
+        print(directory, "directory not found. Attempting to create . . .")
         try:
             os.makedirs(directory, exist_ok=False)
         except OSError:
