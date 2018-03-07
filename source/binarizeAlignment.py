@@ -92,7 +92,7 @@ def binarize_alignment(main_args):
             output_file = gzip.open(output_directory + chromosome + "_" + str(cur_chunk) +
                                     "_features_binary.txt.gz", 'wt')
             print("Done.")
-            output_file_list.write(chromosome + "_" + str(cur_chunk) + "_binary.txt.gz\n")
+            output_file_list.write(chromosome + "_" + str(cur_chunk) + "_features_binary.txt.gz\n")
             output_file.write("cell" + str(cur_chunk) + "\t" + chromosome + "\n")
             output_file.write(new_header + "\n")
 
