@@ -69,7 +69,10 @@ def binarize_alignment(main_args):
     num_bases = main_args.num_bases
     chromosome_sizes_file = open(main_args.chromosome_sizes_file_name, 'r')
     reference_species = main_args.reference_species
-    binary_list_directory = format_dir(main_args.binary_list_directory)
+    if main_args.binary_list_directory is not None:
+        binary_list_directory = format_dir(main_args.binary_list_directory)
+    if main_args.binary_list_directory is None:
+        binary_list_directory = format_dir("binary_list_directory") #default binary list directory name
     output_file_list = open("../" + binary_list_directory + "/" + chromosome + "_binary_list.txt", 'w')
     dummy_state = main_args.dummy_state
     full_variation = main_args.full_variation
