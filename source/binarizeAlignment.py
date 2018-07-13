@@ -73,7 +73,7 @@ def binarize_alignment(main_args):
         binary_list_directory = format_dir(main_args.binary_list_directory)
     if main_args.binary_list_directory is None:
         binary_list_directory = format_dir("binary_list_directory") #default binary list directory name
-    output_file_list = open("../" + binary_list_directory + "/" + chromosome + "_binary_list.txt", 'w')
+    output_file_list = open(binary_list_directory + chromosome + "_binary_list.txt", 'w')
     dummy_state = main_args.dummy_state
     full_variation = main_args.full_variation
     full_index = main_args.full_index
@@ -355,7 +355,7 @@ if __name__ == "__main__":
                         'index of the current file for some housekeeping.')
     parser.add_argument('-bld', '--binaryListDirectory', dest='binary_list_directory', help='Output directory in '
                         'which to put the binary lists for each chromosome. Files are named in the '
-                        '‘chr{number}_binary_list.txt’ format.')'
+                        '‘chr{number}_binary_list.txt’ format.')
 
     args = parser.parse_args()
     if not args.num_bases:
