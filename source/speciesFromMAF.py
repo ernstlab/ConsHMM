@@ -35,7 +35,7 @@ with open(output, 'a') as o:
 
 if len(species_set) != num_species:
     print("Warning: number of species found in MAF file is less than the anticipated number of species in the alignment")
-    print("Number of expected species: " + num_species + " Number of species found: " + len(species_set))
+    print("Number of expected species: " + str(num_species) + " Number of species found: " + str(len(species_set)))
 
 if len(species_set) == num_species:
-    print(num_species + " species were expected and " + len(species_set) + "species were extracted from the MAF file. Species list can be found in " + output)
+    print(str(num_species) + " species were expected and " + str(len(species_set)) + " species were extracted from the MAF file.")
