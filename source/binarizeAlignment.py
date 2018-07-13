@@ -103,6 +103,10 @@ def binarize_alignment(main_args):
     if dummy_state or full_variation:
         new_header += "\tdummy"
 
+    if reference_species not in header_split:
+        sys.exit("Reference species provided " + reference_species + " is not found in header of file provided to -s "
+                                                                    "flag.")
+
     pos_reference = header_split.index(reference_species)
     num_feats = len(header.split(",")) - 2
 
