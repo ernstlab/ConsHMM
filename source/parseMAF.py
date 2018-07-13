@@ -4,6 +4,7 @@ from Bio.Seq import Seq
 import importlib
 from shared import *
 import sys
+import re
 
 
 def parse_maf(main_args):
@@ -11,7 +12,7 @@ def parse_maf(main_args):
     species_file = open(main_args.species_file, 'r')
     output_file = main_args.output_file
     chromosome = main_args.chromosome
-    reference_species = main_args.reference_species + "." + chromosome
+    reference_species = main_args.reference_species
     chromosome_sizes_file_name = main_args.chromosome_sizes_file_name
 
     f = gzip.open(maf_file, 'rt')
@@ -63,7 +64,7 @@ def parse_maf(main_args):
 
             line_type = split_seq[0]
             if line_type == 's':
-                cur_species = split_seq[1]
+                cur_species = re.sub('\..*', '', split_seq[1])
 
                 if cur_species == reference_species:  # store info for human
                     true_len_human = int(split_seq[3])
@@ -81,7 +82,7 @@ def parse_maf(main_args):
                     else:
                         cur_seq = split_seq[6].upper()
                     # store the aligned sequence in other species
-                    aligned_to_human[cur_species[:cur_species.find(".")]] = cur_seq
+                    aligned_to_human[cur_species] = cur_seq
             sequence_line = f.readline()
 
         # when done with an alignment block go through and output whether each species is the same as human
