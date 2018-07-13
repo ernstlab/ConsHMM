@@ -98,7 +98,7 @@ def parse_maf(main_args):
                 if not (pos in covered):
                     o.write(str(pos))
                     for sp in species:
-                        if sp == reference_species[:reference_species.find(".")]:
+                        if sp == reference_species:
                             o.write("," + seq_human[i])
                         elif (sp not in aligned_to_human) or (aligned_to_human[sp][i] == '-'):
                             o.write(",X")
