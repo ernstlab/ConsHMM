@@ -59,7 +59,7 @@ if __name__ == "__main__":
     parser.add_argument('-m', '--MAFFile', required=True, dest='maf_file',
                         help='.maf file containing a multi-sequence alignment.')
     parser.add_argument('-o', '--outputDirectory', required=True, dest='output_directory',
-                        help='Output directory in which to put the binarized segments.')
+                        help='Output directory in which to put the chromosome files.')
     parser.add_argument('-r', '--refSpecies', required=True, dest='reference_species',
                         help='Genome assembly name of the reference species in the alignment.')
     parser.add_argument('-cl', '--chromList', required=True, dest='chromosome_list_file_name',
