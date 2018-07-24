@@ -4,7 +4,6 @@ import argparse
 
 
 def split_maf_by_chr(main_args):
-    print("opening files... does print work?")
     maf_file = gzip.open(main_args.maf_file, 'rt')
     output_directory = format_dir(main_args.output_directory)
     reference_species = main_args.reference_species
@@ -14,7 +13,6 @@ def split_maf_by_chr(main_args):
     output_files = {}
     for line in chromosome_list_file:
         cur_chr = line.split()[0]
-        print(cur_chr)
         output_file = gzip.open(output_directory + cur_chr + ".maf.gz", "wt")
         output_files[cur_chr] = output_file
     print("Done.")
