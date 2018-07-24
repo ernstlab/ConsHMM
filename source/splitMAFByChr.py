@@ -13,7 +13,7 @@ def split_maf_by_chr(main_args):
     output_files = {}
     for line in chromosome_list_file:
         cur_chr = line.strip()
-        output_file = gzip.open(output_directory + cur_chr + ".maf.gz", "wt")
+        output_file = gzip.open(output_directory + cur_chr[0] + ".maf.gz", "wt")
         output_files[cur_chr] = output_file
     print("Done.")
 
