@@ -4,6 +4,7 @@ import argparse
 
 
 def split_maf_by_chr(main_args):
+    print("opening files... does print work?")
     maf_file = gzip.open(main_args.maf_file, 'rt')
     output_directory = format_dir(main_args.output_directory)
     reference_species = main_args.reference_species
