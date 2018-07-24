@@ -69,3 +69,4 @@ if __name__ == "__main__":
                              'you want to generate a separate MAF file.')
 
     args = parser.parse_args()
+    split_maf_by_chr(args)
