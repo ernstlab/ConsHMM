@@ -81,6 +81,7 @@ def parse_maf(main_args):
                         cur_seq = Seq(split_seq[6].upper()).reverse_complement()
                     else:
                         cur_seq = split_seq[6].upper()
+
                     # store the aligned sequence in other species
                     aligned_to_human[cur_species] = cur_seq
             sequence_line = f.readline()
@@ -93,14 +94,15 @@ def parse_maf(main_args):
 
         pos = start_human
         for i in range(len_human_dash):
-            if seq_human[i] != '-':
+            if (seq_human[i] != '-') and (seq_human != '.'):
                 num_bases += 1
                 if not (pos in covered):
                     o.write(str(pos))
                     for sp in species:
                         if sp == reference_species:
                             o.write("," + seq_human[i])
-                        elif (sp not in aligned_to_human) or (aligned_to_human[sp][i] == '-'):
+                        elif (sp not in aligned_to_human) or (aligned_to_human[sp][i] == '-') or \
+                                (aligned_to_human[sp][i] == '.'):
                             o.write(",X")
                         else:
                             o.write("," + str(aligned_to_human[sp][i]))
