@@ -12,7 +12,7 @@ def split_maf_by_chr(main_args):
     print("Creating output files (one for each chromosome) . . .",)
     output_files = {}
     for line in chromosome_list_file:
-        cur_chr = line.strip()
+        cur_chr = line.split()[0]
         output_file = gzip.open(output_directory + cur_chr + ".maf.gz", "wt")
         output_files[cur_chr] = output_file
     print("Done.")
@@ -53,13 +53,13 @@ def split_maf_by_chr(main_args):
         print(chromosome, end="")
         
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="""splitMafByChr.py splits multiple sequence alignmenst that are
+    parser = argparse.ArgumentParser(description="""splitMafByChr.py splits multiple sequence alignments that are
         provided in one single MAF files into multiple MAF files -- one for each chromosome in the reference genome.""")
 
     parser.add_argument('-m', '--MAFFile', required=True, dest='maf_file',
                         help='.maf file containing a multi-sequence alignment.')
     parser.add_argument('-o', '--outputDirectory', required=True, dest='output_directory',
-                        help='Output directory in which to put the binarized segments.')
+                        help='Output directory in which to put the chromosome files.')
     parser.add_argument('-r', '--refSpecies', required=True, dest='reference_species',
                         help='Genome assembly name of the reference species in the alignment.')
     parser.add_argument('-cl', '--chromList', required=True, dest='chromosome_list_file_name',
@@ -67,3 +67,4 @@ if __name__ == "__main__":
                              'you want to generate a separate MAF file.')
 
     args = parser.parse_args()
+    split_maf_by_chr(args)
