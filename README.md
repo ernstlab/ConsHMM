@@ -23,3 +23,7 @@ Sperlea A, Ernst J. 2018. Systematic Discovery of Conservation States for Single
 Adriana Sperlea (University of California, Los Angeles)
 
 Jason Ernst (University of California, Los Angeles)
+
+## Collaborators
+
+Bruins In Genomics students Brooke Felsheim (Washington University in St. Louis) and Jennifer Chien (Wellesley College) helped test the pipeline and implemented several additional features.
