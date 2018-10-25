@@ -26,4 +26,4 @@ Jason Ernst (University of California, Los Angeles)
 
 ## Collaborators
 
-Bruins In Genomics students Brooke Felsheim (Washington University in St. Louis) and Jennifer Chien (Wellesley College) helped test the pipeline and implemented several additional features.
+Bruins In Genomics students Brooke Felsheim (Washington University in St. Louis) and Jennifer Chien (Wellesley College) helped test the pipeline during the summer of 2018 and implemented several additional features.
