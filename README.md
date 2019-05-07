@@ -7,6 +7,12 @@ ConsHMM provides tools for parsing a multiple species alignment and training a H
 2. [Biopython](http://biopython.org/wiki/Download)
 3. [Numpy](http://www.numpy.org/)
 
+If you are in a conda environment, the following lines will install the necessary python libraries
+```
+conda install -c conda-forge biopython
+conda install -c anaconda numpy
+```
+
 ## Getting started
 The segmentation and browser files mentioned in the paper are available at https://ernst.cass.idre.ucla.edu/public/ConsHMM/. Model files and segmentations for hg38 are also available. The link provides the intermediate files produced by the pipeline using the hg19 Multiz 100-way alignment.
 
