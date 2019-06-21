@@ -14,7 +14,7 @@ conda install -c anaconda numpy
 ```
 
 ## Getting started
-The segmentation and browser files mentioned in the paper are available at https://ernst.cass.idre.ucla.edu/public/ConsHMM/. Model files and segmentations for hg38 are also available. **Note that the hg38 states are based on a different multiple sequence alignment and have not been annotated yet**. The link provides the intermediate files produced by the pipeline using the hg19 Multiz 100-way alignment.
+The segmentation and browser files mentioned in the paper are available at https://ernst.cass.idre.ucla.edu/public/ConsHMM/. The link provides the intermediate files produced by the pipeline using the hg19 Multiz 100-way alignment.
 
 The [Wiki](https://github.com/ernstlab/ConsHMM/wiki) contains useful tutorials, including how to reproduce the model and segmentation from the original ConsHMM paper or create your own based on a different reference species and/or multiple-sequence alignment.
 
