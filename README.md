@@ -22,7 +22,7 @@ The [Wiki](https://github.com/ernstlab/ConsHMM/wiki) contains useful tutorials, 
 
 For any use of the ConsHMM software or ConsHMM state annotations, please cite:
 
-Sperlea A, Ernst J. 2018. Systematic Discovery of Conservation States for Single-Nucleotide Annotation of the Human Genome. bioRxiv doi: https://doi.org/10.1101/262097
+Arneson A, Ernst J. Systematic Discovery of Conservation States for Single-Nucleotide Annotation of the Human Genome. *Communications Biology*, 248, 2019. doi: https://doi.org/10.1038/s42003-019-0488-1
 
 ## Authors
 
