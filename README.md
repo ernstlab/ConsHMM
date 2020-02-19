@@ -1,5 +1,10 @@
-# ConsHMM 1.0
+# ConsHMM 1.1
+
 ConsHMM provides tools for parsing a multiple species alignment and training a Hidden Markov Model (HMM) to learn a conservation state annotation of the reference genome in the alignment, at single nucleotide resolution. The HMM is learned using an updated version of the [ChromHMM](http://compbio.mit.edu/ChromHMM/) software, which is included in this repository. Tools for visualizing and interpreting ConsHMM output are also provided. 
+
+**v1.1 updates**:
+* Allele-specific annotations
+* parseMAF can now work on MAF files split by the chromosomes of a different species than the target one
 
 ## Requirements
 1. `Python 3`
@@ -26,7 +31,7 @@ Arneson A, Ernst J. Systematic discovery of conservation states for single-nucle
 
 ## Authors
 
-Adriana Sperlea (University of California, Los Angeles)
+Adriana Arneson (University of California, Los Angeles)
 
 Jason Ernst (University of California, Los Angeles)
 
