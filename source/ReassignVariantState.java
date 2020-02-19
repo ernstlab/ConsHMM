@@ -62,7 +62,7 @@ public class ReassignVariantState
         out.write("\n".getBytes());
     }
 
-    static int[] getChromSizes(String sizesfile, String chrom) throws IOException {
+    static int[] getChromSizes(String sizesfile, String chrom, int chunksize) throws IOException {
         int[] chromInfo = new int[2]; // chromInfo[0] = chromosome size; chromInfo[1] = total number of chunks
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(sizesfile))) {
             String line = bufferedReader.readLine();
@@ -70,7 +70,7 @@ public class ReassignVariantState
                 String[] splitLine = line.trim().split("\t", -1);
                 String curchrom = splitLine[0];
                 int chromsize = Integer.parseInt(splitLine[1]); // chromosome size
-                int numChunks = Integer.parseInt(splitLine[2]); // total number of chunks for this chromosome
+                int numChunks = chromsize / chunksize + 1; // total number of chunks for this chromosome
 
                 if (curchrom.compareTo(chrom) == 0) {
                     chromInfo[0] = chromsize;
@@ -90,8 +90,8 @@ public class ReassignVariantState
     }
 
     public static void main(String[] args) throws IOException {
-        if (args.length != 9) {
-            System.out.println("Usage: reassignVariants <input file> <output file> <reference species> <model file name> <chunk index> <chrom size file> <current chromosome> <window size>");
+        if (args.length != 10) {
+            System.out.println("Usage: reassignVariants <input file> <output file> <reference species> <model file name> <chunk index> <chunk size> <chrom size file> <current chromosome> <window size>");
             System.exit(0);
         }
         
@@ -100,11 +100,12 @@ public class ReassignVariantState
         String reference = args[2];
         String modelfile = args[3];
         int chunk = Integer.parseInt(args[4]); // needed because we are splitting up the MAF sequence files
-        String sizesfile = args[5];
-        String curchrom = args[6];
-        int windowsize = Integer.parseInt(args[7]);
+        int chunksize = Integer.parseInt(args[5]);
+        String sizesfile = args[6];
+        String curchrom = args[7];
+        int windowsize = Integer.parseInt(args[8]);
 
-        int[] chromInfo = getChromSizes(sizesfile, curchrom);
+        int[] chromInfo = getChromSizes(sizesfile, curchrom, chunksize);
 
         // Load ChromHMM model	
 	    ChromHMM theChromHMM = new ChromHMM(modelfile);
