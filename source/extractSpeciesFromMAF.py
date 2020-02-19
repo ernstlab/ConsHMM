@@ -1,4 +1,4 @@
-## Author: Brooke Felsheim
+## Authors: Brooke Felsheim, Adriana Arneson
 
 import re
 import gzip
@@ -21,10 +21,12 @@ def extract_species(main_args):
             line = f.readline()
             continue
         split_seq = line.split()
-        species_set.add(re.sub('\..*', '', split_seq[1]))
+        species_name = re.sub('\..*', '', split_seq[1])
+        if species_name != 'ancestral_sequence' and species_name != 'ancestral_sequences':
+            species_set.add(re.sub('\..*', '', split_seq[1]))
         line = f.readline()
 
-    with open(output, 'a') as o:
+    with open(output, 'w') as o:
         for n in species_set:
             print(n, file=o)
 
