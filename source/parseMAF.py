@@ -30,6 +30,7 @@ def parse_maf(main_args):
         chromosome_sizes_dict[split_line[0]] = int(split_line[1])
 
     if chromosome not in chromosome_sizes_dict:
+        print(chromosome, " not found. Known chromosomes:")
         print_dict_keys(chromosome_sizes_dict)
         exit(1)
 
@@ -43,12 +44,15 @@ def parse_maf(main_args):
 
     num_bases = 0
     covered = {}  # dictionary of bases covered to account for blocks convering duplicate pieces
+    line_number = 0
     while score_line != "":
         if score_line[0] == "#":  # skip comment lines
             score_line = f.readline()
+            line_number += 1
             continue
 
         sequence_line = f.readline()
+        line_number += 1
         start_human = -1
         seq_human = ""
         aligned_to_human = {}
@@ -62,6 +66,8 @@ def parse_maf(main_args):
             last_alignment.append(sequence_line)
             split_seq = sequence_line.split()
 
+            if len(split_seq) == 0:
+                print(last_alignment)
             line_type = split_seq[0]
             if line_type == 's':
                 cur_species = re.sub('\..*', '', split_seq[1])
@@ -85,12 +91,12 @@ def parse_maf(main_args):
                     # store the aligned sequence in other species
                     aligned_to_human[cur_species] = cur_seq
             sequence_line = f.readline()
+            line_number += 1
 
         # when done with an alignment block go through and output whether each species is the same as human
         if len_human_dash == -1:
-            print("Reference species not found in alignment block:")
-            print(last_alignment)
-            exit(1)
+            print("Skipping block on line ", line_number, " because reference species not in it.")
+            continue
 
         pos = start_human
         for i in range(len_human_dash):

@@ -37,7 +37,7 @@ if __name__ == "__main__":
                                      'replaced by the genome wide frequency of each state in the segmentation.',
                                      allow_abbrev=False)
     parser.add_argument('-m', '--modelFile', required=True, dest='model_file_name', help='ConsHMM model file')
-    parser.add_argument('-s', '--segmentationFile', required=True, dest='segmentation_file', help='File containing'
+    parser.add_argument('-s', '--segmentationFile', required=True, dest='segmentation_file_name', help='File containing'
                         ' the genome wide ConsHMM segmentation.')
     parser.add_argument('-o', '--outputFile', required=True, dest='output_file_name', help='Output file where the '
                         'model with the updated parameters will be written')
