@@ -26,7 +26,7 @@ public class ReassignVariantState
         int[] featureArray = new int[(splitLine.length - 3) * 2];
         int pos = 0;
 
-        for (int i = 2; i < splitLine.length; i++) {
+        for (int i = 2; i < splitLine.length-1; i++) {
             if (i != posReference) {
                 if ((splitLine[i].compareTo("-") == 0) || (splitLine[i].compareTo("X") == 0)) { // species does not align at all
                     featureArray[pos] = 0;
@@ -90,7 +90,7 @@ public class ReassignVariantState
     }
 
     public static void main(String[] args) throws IOException {
-        if (args.length != 10) {
+        if (args.length != 9) {
             System.out.println("Usage: reassignVariants <input file> <output file> <reference species> <model file name> <chunk index> <chunk size> <chrom size file> <current chromosome> <window size>");
             System.exit(0);
         }
