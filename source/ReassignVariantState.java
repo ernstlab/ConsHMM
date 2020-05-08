@@ -25,8 +25,8 @@ public class ReassignVariantState
     static int[] createFeatures(String[] splitLine, int posReference, String nucleotide) {
         int[] featureArray = new int[(splitLine.length - 3) * 2];
         int pos = 0;
-
-        for (int i = 2; i < splitLine.length-1; i++) {
+        
+        for (int i = 2; i < splitLine.length; i++) {
             if (i != posReference) {
                 if ((splitLine[i].compareTo("-") == 0) || (splitLine[i].compareTo("X") == 0)) { // species does not align at all
                     featureArray[pos] = 0;
@@ -54,7 +54,7 @@ public class ReassignVariantState
             currentdata.set(windowsize / 2, newDataLine);
         
             int[][] arrayData = currentdata.toArray(new int[currentdata.size()][]);
-       
+            // System.out.println(arrayData[0][0]); 
             int nmaxstate = theChromHMM.getMaxStateAtPos(arrayData, windowsize / 2);
     
             out.write((nmaxstate + " ").getBytes());

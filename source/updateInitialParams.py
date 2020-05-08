@@ -9,7 +9,7 @@ def parse_segmentation(segmentation_file):
         split_line = line.strip().split('\t')
         start = int(split_line[1])
         end = int(split_line[2])
-        state = split_line[3][1:]
+        state = int(split_line[3][1:])
 
         state_freqs[state] += (end - start)
 
@@ -48,6 +48,7 @@ if __name__ == "__main__":
     output_file = gzip.open(args.output_file_name, 'wt')
 
     state_freqs = parse_segmentation(segmentation_file)
+   
     total_bases = sum(state_freqs.values())
 
     update_model(model_file, state_freqs, total_bases, output_file)

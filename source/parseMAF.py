@@ -115,7 +115,8 @@ def parse_maf(main_args):
 
                 cur_species = split_seq[1].split('.')[0]
                 cur_chromosome = '.'.join(split_seq[1].split('.')[1:])
-                if cur_chromosome[0] != 'c':
+                
+                if cur_chromosome[0] != 'c': 
                     cur_chromosome = 'chr' + cur_chromosome
 
                 true_len_species = int(split_seq[3]) # number of nucleotides excluding '-' character for gaps
@@ -203,7 +204,7 @@ def parse_maf(main_args):
                                 print(sp)
                         for sp in species:
                             if (sp not in cur_alignment_block) or (cur_alignment_block[sp][i] in ['-', '.']):
-                                o.write(',-')
+                                o.write(',X')
                             else:
                                 o.write(',' + str(cur_alignment_block[sp][i]))
                         o.write('\n')
