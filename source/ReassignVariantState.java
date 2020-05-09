@@ -90,7 +90,7 @@ public class ReassignVariantState
     }
 
     public static void main(String[] args) throws IOException {
-        if (args.length != 10) {
+        if (args.length != 9) {
             System.out.println("Usage: reassignVariants <input file> <output file> <reference species> <model file name> <chunk index> <chunk size> <chrom size file> <current chromosome> <window size>");
             System.exit(0);
         }

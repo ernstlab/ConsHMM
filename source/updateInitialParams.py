@@ -9,7 +9,7 @@ def parse_segmentation(segmentation_file):
         split_line = line.strip().split('\t')
         start = int(split_line[1])
         end = int(split_line[2])
-        state = split_line[3][1:]
+        state = int(split_line[3][1:])
 
         state_freqs[state] += (end - start)
 
