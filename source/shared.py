@@ -27,9 +27,8 @@ def parse_variation_file(variation_file_name, chromosome = None):
     return SNP_positions, SNP_lines
 
 def create_features(split_line, pos_reference, alt_allele = None):
-    line_features = np.empty((len(split_line) - 2) * 2)  # two features for each species
-    pos = int(split_line[0])
-
+    line_features = np.empty((len(split_line) - 3) * 2)  # two features for each species
+    pos = int(split_line[1])
     # Compare other species to the nucleotide in the reference genome, or to the variant of that nucleotide
     if alt_allele:
         reference = alt_allele
@@ -37,9 +36,9 @@ def create_features(split_line, pos_reference, alt_allele = None):
         reference = split_line[pos_reference]
 
     idx = 0
-    for i in range(1, len(split_line)):
+    for i in range(2, len(split_line)):
         if i != pos_reference:
-            if split_line[i] == 'X':
+            if split_line[i] == '-':
                 line_features[idx] = 0
                 line_features[idx + 1] = 2
             else:
