@@ -4,7 +4,7 @@ ConsHMM provides tools for parsing a multiple species alignment and training a H
 
 For pre-generated ConsHMM annotations in multiple species, visit the [ConsHMM Atlas](https://ernstlab.biolchem.ucla.edu/).
 
-Files from the analysis of bases prioritized by various variant scores are available [here](https://drive.google.com/drive/folders/1ze9aqIcKG_etbYDOraIIGtBDcMgBwFPe?usp=sharing).
+Files from the analysis of bases prioritized by various variant scores in the paper are available [here](https://drive.google.com/drive/folders/1ze9aqIcKG_etbYDOraIIGtBDcMgBwFPe?usp=sharing).
 
 **v1.1 updates**:
 * Allele-specific annotations
