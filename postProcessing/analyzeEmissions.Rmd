@@ -2,8 +2,6 @@
 title: "Post-processing of ConsHMM state parameters"
 output:
   github_document
-editor_options: 
-  chunk_output_type: console
 ---
 
 The ConsHMM pipeline learns a conservation state model from a multiple-sequence alignment of different genomes. This notebook was used to visualize the parameters of a 100-state ConsHMM model learned from the hg19 Multiz 100-way alignment. It can be used to visualize any ConsHMM model, by editing the input files.
@@ -468,30 +466,16 @@ pdf(paste0("../emissionHeatmaps/", genomeName, "_emissions_", numStates, "_state
 pheatmap(emissions_columns_reordered[,-1], main1 = "Align probablities", main2="Match probabilities", cluster_rows = TRUE, cluster_cols = FALSE, clustering_callback = OLO_clustering, cellwidth = 10, cellheight = 9, border_color = NA, labels_col = newcolnames[-1], labels_row = (state_mapping %>% arrange(olo_order))$new_order, gaps_col = numSpecies, fontsize_col = 7, annotation_col = annotation_col, display_numbers = TRUE, fontsize_number = 3, legend_breaks = c(min(emissions_columns_reordered), 0.5, max(emissions_columns_reordered[,-1])), legend_labels = c(0,0.5,1))
 dev.off()
 #plot_list[[1]] = heatmap[[4]]
+```
 
+If you would like your downstream analyses to use a segmentation in which the states are named according to your reordered emissions, the code below will output two files which can be used to rename all your model and segmentation files to the OLO ordering.
+```{r}
 # Output state mapping
 
 write_tsv(state_mapping %>% arrange(olo_order), paste0("../stateRenamingFiles/", genomeName, "_state_renaming_", numStates, ".tsv"), col_names = FALSE)
 write(colnames(emissions_columns_reordered)[2:length(colnames(emissions_columns_reordered))], paste0("../stateRenamingFiles/", genomeName, "_column_reordering_", numStates, ".tsv"))
 ```
 
-Add key enrichments.
-```{r}
-enrichmentsData = read_tsv(paste0("../enrichments/", genomeName, "_", numStates, "_states/", genomeName, ".txt"), n_max=numStates)
-enrichments <- enrichmentsData %>%
-    select(-one_of('state (User order)', 'Genome %'))
-colnames(enrichments) <- enframe(colnames(enrichments)) %>% 
-    separate(value, into=c("title"), by='.') %>% 
-    select(title) %>%
-    deframe
-norm = function(x) {
-  return ((x - min(x)) / (max(x) - min(x)))
-}
-enrichments = apply(enrichments, 2, norm)
-
-colFunc = colorRampPalette(c("white", "red"))
-pdf(paste0("../enrichmentHeatmaps/", genomeName, "_enrichments_", numStates, "_states.pdf"), height=12, width = 6)
-pheatmap(enrichments, color = colFunc(10), cluster_rows = FALSE, cluster_cols = FALSE, cellwidth = 10, cellheight = 9, fontsize_col = 7, display_numbers = FALSE, fontsize_number = 3, main1="", main2="", labels_row = c(1:numStates))
-dev.off()
-```
-
+To reorder your model and segmentation files, use the `Reorder` command in ChromHMM as below:
+`java -jar ChromHMM.jar Reorder -noimage -f <column reordering file> -o <state renaming file> \
+-r <original segmentation file> <reordered_segmentation_file> <original model file> <reordered model file>`
