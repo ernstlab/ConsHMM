@@ -2,6 +2,8 @@
 
 ConsHMM provides tools for parsing a multiple species alignment and training a Hidden Markov Model (HMM) to learn a conservation state annotation of the reference genome in the alignment, at single nucleotide resolution. The HMM is learned using an updated version of the [ChromHMM](http://compbio.mit.edu/ChromHMM/) software, which is included in this repository. Tools for visualizing and interpreting ConsHMM output are also provided. 
 
+The segmentation and browser files mentioned in the paper are available [here](https://public.hoffman2.idre.ucla.edu/ernst/Y7TZG/). The link provides the intermediate files produced by the pipeline using the hg19 Multiz 100-way alignment.
+
 For pre-generated ConsHMM annotations in multiple species, visit the [ConsHMM Atlas](https://ernstlab.biolchem.ucla.edu/).
 
 Files from the analysis of bases prioritized by various variant scores in the paper are available [here](https://drive.google.com/drive/folders/1ze9aqIcKG_etbYDOraIIGtBDcMgBwFPe?usp=sharing).
@@ -23,8 +25,6 @@ conda install -c anaconda numpy
 ```
 
 ## Getting started
-The segmentation and browser files mentioned in the paper are available [here](https://public.hoffman2.idre.ucla.edu/ernst/Y7TZG/). The link provides the intermediate files produced by the pipeline using the hg19 Multiz 100-way alignment.
-
 The [Wiki](https://github.com/ernstlab/ConsHMM/wiki) contains useful tutorials, including how to reproduce the model and segmentation from the original ConsHMM paper or create your own based on a different reference species and/or multiple-sequence alignment.
 
 
