@@ -4,7 +4,7 @@ ConsHMM provides tools for parsing a multiple species alignment and training a H
 
 The segmentation and browser files mentioned in the paper are available [here](https://public.hoffman2.idre.ucla.edu/ernst/Y7TZG/). The link provides the intermediate files produced by the pipeline using the hg19 Multiz 100-way alignment.
 
-For pre-generated ConsHMM annotations in multiple species, visit the [ConsHMM Atlas](https://ernstlab.biolchem.ucla.edu/).
+For pre-generated ConsHMM annotations in multiple species, visit the [ConsHMM Atlas](https://ernstlab.biolchem.ucla.edu/ConsHMMAtlas/).
 
 Files from the analysis of bases prioritized by various variant scores in the paper are available [here](https://drive.google.com/drive/folders/1ze9aqIcKG_etbYDOraIIGtBDcMgBwFPe?usp=sharing).
 
